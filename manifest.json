@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Ultrawide Fit for YouTube",
+  "version": "1.0.0",
+  "description": "Zoom or stretch YouTube videos to fill ultrawide (21:9 / 32:9) monitors.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_title": "Ultrawide Fit: off (click to cycle)",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.youtube.com/*",
+        "*://m.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "commands": {
+    "cycle-mode": {
+      "suggested_key": {
+        "default": "Alt+Shift+U"
+      },
+      "description": "Cycle Off \u2192 Zoom \u2192 Stretch"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
